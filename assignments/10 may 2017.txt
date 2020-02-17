@@ -1,0 +1,8 @@
+1. WAP for following matrix manipulations.
+	a. addition
+	b. substraction
+	c. multiplication
+	d. upper triangular matrix
+	e. lower triangular matrix
+	f. diagonal matrix
+	h. tridiagonal matrix

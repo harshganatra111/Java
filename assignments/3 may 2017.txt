@@ -1,0 +1,10 @@
+Write programs for follwings-
+
+1. (a+b)(a-b)=
+2. (a+b+c)/3=
+3. (ab+bc+ca+2abc)=
+4. Area of Circle
+5. Area of Rectangle
+
+WAP to find the greater among 3 numbers.
+WAP to find the eligible candidate based on career 60%.

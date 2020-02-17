@@ -1,0 +1,130 @@
+package simulator;
+import com.jogamp.opengl.*;
+import com.jogamp.opengl.awt.GLCanvas;
+import com.jogamp.opengl.glu.GLU;
+import com.jogamp.opengl.util.FPSAnimator;
+import com.jogamp.opengl.util.texture.Texture;
+import com.jogamp.opengl.util.texture.TextureData;
+import com.jogamp.opengl.util.texture.TextureIO;
+import java.awt.event.KeyEvent;
+import java.io.*;
+import java.util.*;
+public class Canvas extends GLCanvas implements GLEventListener {
+	FPSAnimator animator;
+	 GLU glu;
+	Texture universe;
+	 ArrayList<Moons> Moons1;
+	 Jupit jup_obj;
+	float tempo = 0.0f, Speed = 0.0f, Elevation = 0.0f,jup_rad = 12f,UPx = 0.0f, UPy = 1.0f, UPz = 0.0f,Posx = 0.0f, Posy = 0.0f, Posz = -20.0f;
+	public Canvas(int width, int height, GLCapabilities capabilities) {
+		setSize(800, 800);
+		addGLEventListener(this);
+	}
+	@Override
+	public void init(GLAutoDrawable drawable) {
+		GL2 gl = drawable.getGL().getGL2();
+		glu = new GLU();
+		Moons1 = new ArrayList<>();
+		gl.glDisable(GL.GL_DEPTH_TEST);
+		gl.glShadeModel(GL2.GL_SMOOTH);
+		gl.glClearColor(0f, 0f, 0f, 0f);
+		animator = new FPSAnimator(this, 100);
+		animator.start();
+		String FileName = "res\\black.png";
+		universe = getTextu(gl, FileName);
+		FileName = "res\\jupiter.jpg";
+		this.jup_obj = new Jupit(gl, glu, getTextu(gl, FileName));
+		FileName = "res\\moon1.jpg";
+		Moons moon1 = new Moons(gl, glu, getTextu(gl, FileName), 1.2f, jup_rad+2f, 2.56f);
+		FileName = "res\\moon2.jpg";
+		Moons moon2 = new Moons(gl, glu, getTextu(gl, FileName), 0.7f, jup_rad + 12f, 3.56f);
+		FileName = "res\\moon3.jpg";
+		Moons moon3 = new Moons(gl, glu, getTextu(gl, FileName), 0.25f, jup_rad + 28f, 4.56f);
+		FileName = "res\\moon4.jpg";
+		Moons moon4 = new Moons(gl, glu, getTextu(gl, FileName), 0.3f, jup_rad + 40f, 3.56f);
+		FileName = "res\\moon5.jpg";
+		Moons moon5 = new Moons(gl, glu, getTextu(gl, FileName), 0.3f, jup_rad + 60f, 4.56f);
+		FileName = "res\\moon6.jpg";
+		Moons moon6 = new Moons(gl, glu, getTextu(gl, FileName), 0.25f, jup_rad + 75f, 4.56f);
+		FileName = "res\\moon7.jpg";
+		Moons moon7 = new Moons(gl, glu, getTextu(gl, FileName), 0.275f, jup_rad + 100f, 4.56f);
+		Moons1.add(moon1);
+		Moons1.add(moon2);
+		Moons1.add(moon3);
+		Moons1.add(moon4);
+		Moons1.add(moon5);
+		Moons1.add(moon6);
+		Moons1.add(moon7);
+	}
+	@Override
+	public void dispose(GLAutoDrawable glAutoDrawable) {
+	}
+	@Override
+	public void display(GLAutoDrawable glAutoDrawable) {
+		final GL2 gl = glAutoDrawable.getGL().getGL2();
+		setPos(gl, 300);
+		gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
+		jup_obj.display();
+		for (Moons p : Moons1)
+			p.display();
+		draw(gl);
+	}
+	    Texture getTextu(GL2 gl, String fileName) {
+		InputStream stream = null;
+		Texture tex = null;
+		String extension = fileName.substring(fileName.lastIndexOf('.'));
+		try {
+			stream = new FileInputStream(new File(fileName));
+			TextureData data = TextureIO.newTextureData(gl.getGLProfile(), stream, false, extension);
+			tex = TextureIO.newTexture(data);
+		} catch (Exception e) {
+			System.err.println("Exception Found");
+			e.printStackTrace();
+		}		return tex;
+	}
+	
+	 void setPos(GL2 gl, float distance) {
+		gl.glMatrixMode(GL2.GL_PROJECTION);
+		gl.glLoadIdentity();
+		float widthHeightRatio = (float) getWidth() / (float) getHeight();
+		glu.gluPerspective(45, widthHeightRatio, 1, 1000);
+		glu.gluLookAt(0, 0, distance, 0, 0, 0, 0, 1, 0);
+		gl.glMatrixMode(GL2.GL_MODELVIEW);
+		gl.glLoadIdentity();
+	}
+	@Override
+	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+		GL gl = drawable.getGL();
+		gl.glViewport(0, 0, width, height);
+	}
+	void movePos() {
+		float[] tmp = converting(tempo, Speed, Elevation);
+		Posx += tmp[0];
+		Posy += tmp[1];
+		Posz += tmp[2];
+	}
+	public void aimPos(GL2 gl, GLU glu) {
+		gl.glLoadIdentity();
+	}
+	    float[] converting(float temp, float length, float altitude) {
+		float[] result = new float[3];
+		float x, y, z;
+		float theta = (float) Math.toRadians(90 - temp);
+		float tan = (float) Math.tan(theta);
+		float rad = (float) Math.toRadians(altitude);
+		x = (length) / (tan * tan + 1);
+		z = tan * x;
+		x = -x;
+		y = (float) (Math.sqrt(z * z + x * x) * Math.sin(rad));
+		result[0] = x;
+		result[1] = y;
+		result[2] = z;
+		return result;
+	}
+	public void keyPressed(KeyEvent event) {	
+	}
+	private void draw(GL gl) {
+		gl.glEnable(GL.GL_BLEND);
+		gl.glBlendFunc(GL.GL_SRC_COLOR, GL.GL_DST_ALPHA);
+	}
+}

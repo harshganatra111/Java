@@ -1,0 +1,12 @@
+1. WAP to calculate the following using methods and switch case
+    a. area of circle
+    b. area of rectangle
+    c. area of square
+    d. area of a cylinder
+    e. area of sphere
+
+2. WAP to convert given string into upper case , lower case or to perform toggle case using method and switch case
+3. WAP to accept a student's roll number,name,marks of 5 subjects each having full marks of 100.Calculate the total mark ,percentage and grade using method.
+4. WAP to calculate factorial of a given number using method.
+5. WAP to calculate the GCD and LCM of given numbers using method.
+ 

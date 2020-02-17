@@ -1,0 +1,17 @@
+1.WAP to input your name and display the ASCII value of its each character. (IO package)
+2.WAP to accept the Basic Salary, HRA, EPF, ESI of an Employee and calculate the Net Payable Salary. (using Scanner Class)
+  HRA -> 10% of Basic
+  EPF -> 12.5% of Basic
+  ESI -> 4.75% of Gross Salary
+
+  Gross Salary=Basic+HRA
+  Net Payable=Gross-(EPF+ESI)
+3.WAP to convert Character to ASCII and vice versa using switch case.
+4.WAP to generate the ASCII table for Alphabets(A-Z,a-z) and Digits(0-9).
+
+//wrapper classes and their methods to convert a string into the respective datatype
+Integer.parseInt()
+Float.parseFloat()
+Double.parseDouble()
+Long.parseLong()
+Boolean.parseBoolean()

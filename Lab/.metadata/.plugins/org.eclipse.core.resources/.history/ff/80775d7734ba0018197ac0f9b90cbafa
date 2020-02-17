@@ -1,0 +1,9 @@
+package simulator;
+
+import javax.swing.*;
+
+import com.jogamp.opengl.GLCapabilities;
+import com.jogamp.opengl.GLProfile;
+
+import java.awt.*;
+

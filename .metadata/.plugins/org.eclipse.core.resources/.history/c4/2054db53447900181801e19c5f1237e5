@@ -1,0 +1,26 @@
+class Store{
+	int i,cnt;
+	String StoreName = "Provision Store";
+	String Item[] = {"Iten1","Item2","Item3","Item4"};
+	String SelectedItem[] = new String[5];
+	void DisplayItem()
+	{
+		for(i=0;i<4;i++)
+		{
+			System.out.println((i+1) +". "+ Item[i]);
+		}
+	}
+	void Selected()
+	{
+		System.out.println("Enter your choice");
+	}
+}
+public class ProvisionStore {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Store obj = new Store();
+		obj.DisplayItem();
+	}
+
+}

@@ -1,0 +1,20 @@
+class Store{
+	int i;
+	String StoreName = "Provision Store";
+	String Item[] = {"Iten1","Item2","Item3","Item4"};
+	void DisplayItem()
+	{
+		for(i=0;i<4;i++)
+		{
+			System.out.println((i+1) +". "+ Item[i]);
+		}
+	}
+}
+public class ProvisionStore {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

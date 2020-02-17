@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 elements to &apos;lib&apos;&#x0D;&#x0A;- Original project: &apos;JOGLPractice&apos;&#x0D;&#x0A;- Destination element: &apos;lib&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     jogl-all-natives-windows-i586(1).jar&#x0D;&#x0A;     jogl-all.jar&#x0D;&#x0A;     gluegen-rt-natives-windows-i586(1).jar&#x0D;&#x0A;     gluegen-rt.jar" description="Copy files" element1="lib/jogl-all-natives-windows-i586(1).jar" element2="lib/jogl-all.jar" element3="lib/gluegen-rt-natives-windows-i586(1).jar" element4="lib/gluegen-rt.jar" files="4" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1534740428021" target="/JOGL1/lib" units="0" version="1.0"/>
+</session>

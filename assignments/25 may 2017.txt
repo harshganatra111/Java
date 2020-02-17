@@ -1,0 +1,7 @@
+1. compareTo()
+2. compareToIgnoreCase()
+3. hashCode()
+4. equals()
+5. equalsIgnoreCase()
+6. split()
+7. toCharArray()

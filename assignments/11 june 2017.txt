@@ -1,0 +1,5 @@
+design a ascii converter seperated be space.
+ 		focus gained 		focus lost
+bg color	white			gray
+text color 	black			white
+font style 	bold			normal

@@ -1,0 +1,2 @@
+1.WAP to check whether a number is +ve, -ve or zero.
+2.WAP to check whether a character is number, alphabet or special charater.

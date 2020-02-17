@@ -1,0 +1,8 @@
+1. WAP to enter name of students separated by comma and display the names in list format with serial numbers(1,2,3,...). (using StringTokenizer)
+2. WAP to display the following pattern
+	Aa
+	Aa Bb
+	Aa Bb Cc
+	Aa Bb Cc Dd
+	Aa Bb Cc Dd Ee
+3. WAP to develop a login mechanism with username, password and otp validation.

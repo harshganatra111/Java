@@ -1,0 +1,37 @@
+package simulator;
+
+import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.glu.GLU;
+import com.jogamp.opengl.glu.GLUquadric;
+import com.jogamp.opengl.util.texture.Texture;
+
+public class Jupit {
+	private GL2 gl;
+	private GLU glu;
+	private Texture JupiterTexture;
+	private float angle = 0;
+
+	public Jupit(GL2 gl, GLU glu, Texture JupiterTexture) {
+		this.gl = gl;
+		this.glu = glu;
+		this.JupiterTexture = JupiterTexture;
+	}
+
+	public void display() {
+		float[] rgba = { 1f, 1f, 1f };
+		gl.glMaterialf(GL2.GL_FRONT, GL2.GL_SHININESS, 1f);
+		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+		
+		JupiterTexture.enable(gl);
+		JupiterTexture.bind(gl);
+		angle = (angle + 0.7f) % 360f;
+		gl.glPushMatrix();
+		gl.glRotatef(angle, 0.8f, 0.1f, 0);
+		GLUquadric sun = glu.gluNewQuadric();
+		glu.gluQuadricTexture(sun, true);
+		glu.gluSphere(sun, 10f, 16, 16);
+
+		gl.glPopMatrix();
+	}
+
+}

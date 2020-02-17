@@ -1,0 +1,18 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class Smiley {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Smiley obj = new Smiley();
+		JFrame frame = new JFrame();
+		frame.setSize(400,400);
+		frame.setVisible(true);
+		frame.add(obj);
+	}
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		setBackground(Color.YELLOW);
+	}
+}
